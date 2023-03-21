@@ -12,5 +12,9 @@ Rswag::Ui.configure do |c|
 
   # Add Basic Auth in case your API is private
   c.basic_auth_enabled = true
-  c.basic_auth_credentials Rails.application.credentials[:swagger][:username], Rails.application.credentials[:swagger][:password]
+  # c.basic_auth_credentials Rails.application.credentials[:swagger][:username], Rails.application.credentials[:swagger][:password]
+
+  if Rails.application.credentials.dig(:swagger, :username).present? && Rails.application.credentials.dig(:swagger, :password).present?
+    c.basic_auth_credentials Rails.application.credentials.dig(:swagger, :username), Rails.application.credentials.dig(:swagger, :password)
+  end
 end
