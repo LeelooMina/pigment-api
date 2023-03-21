@@ -1,0 +1,2 @@
+class ColorFamily < ApplicationRecord
+end
