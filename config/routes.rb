@@ -28,10 +28,20 @@ Rails.application.routes.draw do
         post :create
       end
 
-      namespace :posts do
-        
-      end
-
+      resources :posts
+      resources :comments
+      resources :comment_post, only: [:create, :destroy]
+      resources :likes, only: [:create, :destroy]
+      resources :follows, only: [:create, :destroy]
+      resources :palletes
+      resources :palette_posts
+      resources :paints
+      resources :paint_palettes, only: [:create, :destroy]
+      resources :swatches
+      resources :color_families, only: [:create, :destroy]
+      resources :pigments
+      resources :color_family_pigments, only: [:create, :destroy]
+      resources :paint_pigments, only: [:create, :destroy]
 
       
     end
