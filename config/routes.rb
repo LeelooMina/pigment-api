@@ -27,6 +27,13 @@ Rails.application.routes.draw do
         get :me
         post :create
       end
+
+      namespace :posts do
+        
+      end
+
+
+      
     end
   end
 end
