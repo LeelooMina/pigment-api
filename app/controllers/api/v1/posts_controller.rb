@@ -1,4 +1,6 @@
-class PostsController < ApplicationController
+module Api
+  module V1
+    class PostsController < ApplicationController
   before_action :set_post, only: %i[ show update destroy ]
 
   # GET /posts
@@ -48,4 +50,7 @@ class PostsController < ApplicationController
     def post_params
       params.require(:post).permit(:user_id, :title, :content, :img_url)
     end
+end
+
+end
 end
