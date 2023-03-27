@@ -25,6 +25,11 @@ class User < ApplicationRecord
   has_many :tokens
   has_many :user_roles
   has_many :roles, through: :user_roles
+  has_many :follows
+  has_many :posts
+  has_many :swatches
+  has_many :palettes
+  has_many :comments
 
   validates :email, uniqueness: true
 
