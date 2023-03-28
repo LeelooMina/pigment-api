@@ -32,7 +32,7 @@ module Api
       # PATCH/PUT /posts/1
       def update
         if @post.update(post_params)
-          render json: @post
+          render json: { message: 'Post updated successfully', post: @post }, status: :ok
         else
           render json: @post.errors, status: :unprocessable_entity
         end
@@ -40,7 +40,12 @@ module Api
 
       # DELETE /posts/1
       def destroy
+        if @post.user_id == @current_user.id
         @post.destroy
+        render json: { message: 'Post deleted successfully' }, status: :ok
+        else
+          render json: @post.errors, status: :unprocessable_entity
+        end
       end
 
       private
