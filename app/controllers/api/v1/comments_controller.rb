@@ -15,7 +15,10 @@ class CommentsController < ApplicationController
 
   # POST /comments
   def create
-    @comment = Comment.new(comment_params)
+    # @comment = Comment.new(comment_params)
+
+    @comment = @current_user.comments.new(comment_params)
+
 
     if @comment.save
       render json: @comment, status: :created, location: @comment
