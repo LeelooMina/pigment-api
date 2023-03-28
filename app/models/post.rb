@@ -7,6 +7,8 @@ class Post < ApplicationRecord
   has_many :comments, through: :comment_post
   has_one :palette, through: :palette_post
 
+  has_one_attached :image
+
 
 
 
