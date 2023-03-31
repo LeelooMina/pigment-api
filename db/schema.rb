@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_03_28_012505) do
+ActiveRecord::Schema[7.0].define(version: 2023_03_31_215928) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -47,24 +47,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_28_012505) do
     t.string "swatch_url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "color_family_pigments", force: :cascade do |t|
-    t.bigint "color_family_id", null: false
-    t.bigint "pigment_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["color_family_id"], name: "index_color_family_pigments_on_color_family_id"
-    t.index ["pigment_id"], name: "index_color_family_pigments_on_pigment_id"
-  end
-
-  create_table "comment_posts", force: :cascade do |t|
-    t.bigint "post_id", null: false
-    t.bigint "comment_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["comment_id"], name: "index_comment_posts_on_comment_id"
-    t.index ["post_id"], name: "index_comment_posts_on_post_id"
   end
 
   create_table "comments", force: :cascade do |t|
@@ -150,6 +132,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_28_012505) do
     t.boolean "available"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "color_family_id"
+    t.index ["color_family_id"], name: "index_pigments_on_color_family_id"
   end
 
   create_table "posts", force: :cascade do |t|
@@ -215,10 +199,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_28_012505) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "color_family_pigments", "color_families"
-  add_foreign_key "color_family_pigments", "pigments"
-  add_foreign_key "comment_posts", "comments"
-  add_foreign_key "comment_posts", "posts"
   add_foreign_key "comments", "posts"
   add_foreign_key "comments", "users"
   add_foreign_key "follows", "users", column: "followee_id"
@@ -232,6 +212,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_28_012505) do
   add_foreign_key "palette_posts", "palettes"
   add_foreign_key "palette_posts", "posts"
   add_foreign_key "palettes", "users"
+  add_foreign_key "pigments", "color_families"
   add_foreign_key "posts", "users"
   add_foreign_key "swatches", "paints"
   add_foreign_key "swatches", "users"
