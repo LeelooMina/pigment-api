@@ -39,6 +39,12 @@ module Api
         render_success(payload: UserBlueprint.render_as_hash(@current_user), status: 200)
       end
 
+      def show
+        user = User.find(params[:id])
+        render_success(payload: UserBlueprint.render_as_hash(user), status: 200)
+      end
+      
+
       def validate_invitation
         user = User.invite_token_is(params[:invitation_token]).invite_not_expired.first
 
