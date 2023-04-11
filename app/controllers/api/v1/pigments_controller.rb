@@ -1,5 +1,9 @@
-class PigmentsController < ApplicationController
+module Api
+  module V1
+class PigmentsController < Api::V1::ApplicationController
   before_action :set_pigment, only: %i[ show update destroy ]
+
+  skip_before_action :authenticate, only: %i[index show]
 
   # GET /pigments
   def index
@@ -48,4 +52,6 @@ class PigmentsController < ApplicationController
     def pigment_params
       params.require(:pigment).permit(:name, :description, :available)
     end
+end
+end
 end
