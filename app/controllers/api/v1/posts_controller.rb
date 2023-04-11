@@ -21,6 +21,7 @@ module Api
         # @post = Post.new(post_params)
 
         @post = @current_user.posts.build(post_params)
+        @post.username = @current_user.username
 
         if @post.save
           render json: @post, status: :created

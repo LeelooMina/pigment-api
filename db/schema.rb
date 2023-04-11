@@ -49,24 +49,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_10_231651) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "color_family_pigments", force: :cascade do |t|
-    t.bigint "color_family_id", null: false
-    t.bigint "pigment_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["color_family_id"], name: "index_color_family_pigments_on_color_family_id"
-    t.index ["pigment_id"], name: "index_color_family_pigments_on_pigment_id"
-  end
-
-  create_table "comment_posts", force: :cascade do |t|
-    t.bigint "post_id", null: false
-    t.bigint "comment_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["comment_id"], name: "index_comment_posts_on_comment_id"
-    t.index ["post_id"], name: "index_comment_posts_on_post_id"
-  end
-
   create_table "comments", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.text "content"
@@ -161,6 +143,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_10_231651) do
     t.string "img_url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "username"
     t.index ["user_id"], name: "index_posts_on_user_id"
   end
 
@@ -212,15 +195,13 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_10_231651) do
     t.datetime "invitation_expiration", precision: nil
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "username"
     t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["username"], name: "index_users_on_username", unique: true
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "color_family_pigments", "color_families"
-  add_foreign_key "color_family_pigments", "pigments"
-  add_foreign_key "comment_posts", "comments"
-  add_foreign_key "comment_posts", "posts"
   add_foreign_key "comments", "posts"
   add_foreign_key "comments", "users"
   add_foreign_key "follows", "users", column: "followee_id"
