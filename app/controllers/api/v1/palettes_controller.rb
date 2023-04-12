@@ -1,51 +1,63 @@
-class PalettesController < ApplicationController
-  before_action :set_palette, only: %i[ show update destroy ]
+module Api
+  module V1
+    class PalettesController < Api::V1::ApplicationController
+      before_action :set_palette, only: [:show, :update, :destroy, :paints]
 
-  # GET /palettes
-  def index
-    @palettes = Palette.all
+      def index
+        @palettes = Palette.all
+        render json: @palettes
+      end
 
-    render json: @palettes
-  end
+      def show
+        render json: @palette
+      end
 
-  # GET /palettes/1
-  def show
-    render json: @palette
-  end
+      def create
+        @palette = Palette.new(palette_params)
 
-  # POST /palettes
-  def create
-    @palette = Palette.new(palette_params)
+        if @palette.save
+          render json: @palette, status: :created, location: @palette
+        else
+          render json: @palette.errors, status: :unprocessable_entity
+        end
+      end
 
-    if @palette.save
-      render json: @palette, status: :created, location: @palette
-    else
-      render json: @palette.errors, status: :unprocessable_entity
+      def update
+        if @palette.update(palette_params)
+          render json: @palette
+        else
+          render json: @palette.errors, status: :unprocessable_entity
+        end
+      end
+
+      def destroy
+        @palette.destroy
+      end
+
+      def paints
+        @paints = @palette.paints.flat_map { |paint| paint.pigments.map(&:color_families) }.flatten.uniq
+        
+        render json: @paints
+      end
+      
+      
+
+      private
+
+      def set_palette
+        # puts params.inspect
+        # @palette = Palette.find_by(id: params[:id])
+        # puts @palette
+     
+          @palette = Palette.find_by(id: params[:palette_id])
+          render json: { error: 'Palette not found' }, status: :not_found unless @palette
+        
+        
+      end
+
+      def palette_params
+        params.require(:palette).permit(:user_id, :name, :description)
+      end
     end
   end
-
-  # PATCH/PUT /palettes/1
-  def update
-    if @palette.update(palette_params)
-      render json: @palette
-    else
-      render json: @palette.errors, status: :unprocessable_entity
-    end
-  end
-
-  # DELETE /palettes/1
-  def destroy
-    @palette.destroy
-  end
-
-  private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_palette
-      @palette = Palette.find(params[:id])
-    end
-
-    # Only allow a list of trusted parameters through.
-    def palette_params
-      params.require(:palette).permit(:user_id, :name, :description)
-    end
 end

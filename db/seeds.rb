@@ -6,126 +6,129 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-# Pigment.create(name: "PR83", description: "Alizarin Crimson", available: true)
+Pigment.create(name: "PR83", description: "Alizarin Crimson", available: true)
 
-# Pigment.create(name: "PR108", description: "Cadmium Red", available: true)
+Pigment.create(name: "PR108", description: "Cadmium Red", available: true)
 
-# Pigment.create(name: "PV19", description: "Carmine", available: true)
+Pigment.create(name: "PV19", description: "Carmine", available: true)
 
-# Pigment.create(name: "PB28", description: "Cobalt Blue", available: true)
+Pigment.create(name: "PB28", description: "Cobalt Blue", available: true)
 
-# Pigment.create(name: "PBr7", description: "Burnt Sienna:", available: true)
+Pigment.create(name: "PBr7", description: "Burnt Sienna:", available: true)
 
-# Pigment.create(name: "PB35", description: "Cerulean Blue", available: true)
+Pigment.create(name: "PB35", description: "Cerulean Blue", available: true)
 
-# Pigment.create(name: "PY151", description: "Gamboge", available: true)
+Pigment.create(name: "PY151", description: "Gamboge", available: true)
 
-# Pigment.create(name: "PG7", description: "Hooker's Green", available: true)
+Pigment.create(name: "PG7", description: "Hooker's Green", available: true)
 
-# Pigment.create(name: "PR101", description: "Indian Red:", available: true)
+Pigment.create(name: "PR101", description: "Indian Red:", available: true)
 
-# Pigment.create(name: "PB66", description: "Indigo", available: true)
+Pigment.create(name: "PB66", description: "Indigo", available: true)
 
-# Pigment.create(name: "PBk9", description: "Ivory Black", available: true)
+Pigment.create(name: "PBk9", description: "Ivory Black", available: true)
 
-# Pigment.create(name: "PY35", description: "Cadmium Yellow", available: true)
+Pigment.create(name: "PY35", description: "Cadmium Yellow", available: true)
 
-# Pigment.create(name: "PR122", description: "Cadmium Red", available: true)
+Pigment.create(name: "PR122", description: "Cadmium Red", available: true)
 
-# Pigment.create(name: "PB15:3", description: "Phthalo Blue", available: true)
+Pigment.create(name: "PB15:3", description: "Phthalo Blue", available: true)
 
-# Pigment.create(name: "PV19", description: "Quinacridone Rose", available: true)
+Pigment.create(name: "PV19", description: "Quinacridone Rose", available: true)
 
-# Pigment.create(name: "PO62", description: "Burnt Sienna", available: true)
+Pigment.create(name: "PO62", description: "Burnt Sienna", available: true)
 
-# Pigment.create(name: "PBr7", description: "Raw Umber", available: true)
+Pigment.create(name: "PBr7", description: "Raw Umber", available: true)
 
-# Pigment.create(name: "PG36", description: "Sap Green", available: true)
+Pigment.create(name: "PG36", description: "Sap Green", available: true)
 
-# Pigment.create(name: "PB28", description: "Cobalt Blue", available: true)
+Pigment.create(name: "PB28", description: "Cobalt Blue", available: true)
 
-# Pigment.create(name: "PV23", description: "Dioxazine Violet", available: true)
+Pigment.create(name: "PV23", description: "Dioxazine Violet", available: true)
 
-# Pigment.create(name: "PY150", description: "Nickel Azo Yellow", available: true)
+Pigment.create(name: "PY150", description: "Nickel Azo Yellow", available: true)
 
-# Pigment.create(name: "PY153", description: "Transparent Yellow", available: true)
+Pigment.create(name: "PY153", description: "Transparent Yellow", available: true)
 
-# Pigment.create(name: "PO48", description: "Pyrrole Orange", available: true)
+Pigment.create(name: "PO48", description: "Pyrrole Orange", available: true)
 
-# Pigment.create(name: "PR264", description: "Pyrrole Red", available: true)
+Pigment.create(name: "PR264", description: "Pyrrole Red", available: true)
 
-# Pigment.create(name: "PB60", description: "Ultramarine Blue", available: true)
+Pigment.create(name: "PB60", description: "Ultramarine Blue", available: true)
 
-# Pigment.create(name: "PV14", description: "Ultramarine Violet", available: true)
-
-
-# Pigment.create(name: "PBr25", description: "Burnt Umber", available: true)
-
-# Pigment.create(name: "PG18", description: "Viridian Green", available: true)
-
-# Pigment.create(name: "PBk11", description: "Mars Black", available: true)
-
-# Pigment.create(name: "PB29", description: "Winsor Blue", available: true)
-
-# Pigment.create(name: "PV37", description: "Quinacridone Magenta", available: true)
-
-# Pigment.create(name: "PY129", description: "Aureolin Yellow", available: true)
-
-# Pigment.create(name: "PR149", description: "Naphthol Red", available: true)
-
-# Pigment.create(name: "PV19/PB15:6", description: "Carbazole Violet", available: true)
-
-# Pigment.create(name: "PB15:1", description: "Phthalo Green", available: true)
-
-# Pigment.create(name: "PBr7/PBk11", description: "Neutral Tint", available: true)
-
-# Pigment.create(name: "PV42", description: "Quinacridone Purple", available: true)
-
-# Pigment.create(name: "PY43", description: "Yellow Ochre", available: true)
-
-# Pigment.create(name: "PO71", description: "Pyrrole Scarlet", available: true)
-
-# Pigment.create(name: "PR206", description: "Quinacridone Red", available: true)
-
-# Pigment.create(name: "PY153", description: "Transparent Yellow", available: true)
-
-# Pigment.create(name: "PO48", description: "Pyrrole Orange", available: true)
-
-# Pigment.create(name: "PR264", description: "Pyrrole Red", available: true)
-
-# Pigment.create(name: "PB60", description: "Ultramarine Blue", available: true)
-
-# Pigment.create(name: "PV14", description: "Ultramarine Violet", available: true)
+Pigment.create(name: "PV14", description: "Ultramarine Violet", available: true)
 
 
+Pigment.create(name: "PBr25", description: "Burnt Umber", available: true)
 
-# Pigment.create(name: "PBr25", description: "Burnt Umber", available: true)
+Pigment.create(name: "PG18", description: "Viridian Green", available: true)
 
-# Pigment.create(name: "PG18", description: "Viridian Green", available: true)
+Pigment.create(name: "PBk11", description: "Mars Black", available: true)
 
-# Pigment.create(name: "PBk11", description: "Mars Black", available: true)
+Pigment.create(name: "PB29", description: "Winsor Blue", available: true)
 
-# Pigment.create(name: "PB29", description: "Winsor Blue", available: true)
+Pigment.create(name: "PR108", description: "Cadmium Red", available: true)
 
-# Pigment.create(name: "PV37", description: "Quinacridone Magenta", available: true)
 
-# Pigment.create(name: "PY129", description: "Aureolin Yellow", available: true)
+Pigment.create(name: "PV37", description: "Quinacridone Magenta", available: true)
 
-# Pigment.create(name: "PR149", description: "Naphthol Red", available: true)
+Pigment.create(name: "PY129", description: "Aureolin Yellow", available: true)
 
-# Pigment.create(name: "PV19/PB15:6", description: "Carbazole Violet", available: true)
+Pigment.create(name: "PR149", description: "Naphthol Red", available: true)
 
-# Pigment.create(name: "PB15:1", description: "Phthalo Green", available: true)
+Pigment.create(name: "PV19/PB15:6", description: "Carbazole Violet", available: true)
 
-# Pigment.create(name: "PBr7/PBk11", description: "Neutral Tint", available: true)
+Pigment.create(name: "PB15:1", description: "Phthalo Green", available: true)
 
-# Pigment.create(name: "PV42", description: "Quinacridone Purple", available: true)
+Pigment.create(name: "PBr7/PBk11", description: "Neutral Tint", available: true)
 
-# Pigment.create(name: "PY43", description: "Yellow Ochre", available: true)
+Pigment.create(name: "PV42", description: "Quinacridone Purple", available: true)
 
-# Pigment.create(name: "PO71", description: "Pyrrole Scarlet", available: true)
+Pigment.create(name: "PY43", description: "Yellow Ochre", available: true)
 
-# Pigment.create(name: "PR206", description: "Quinacridone Red", available: true)
+Pigment.create(name: "PO71", description: "Pyrrole Scarlet", available: true)
+
+Pigment.create(name: "PR206", description: "Quinacridone Red", available: true)
+
+Pigment.create(name: "PY153", description: "Transparent Yellow", available: true)
+
+Pigment.create(name: "PO48", description: "Pyrrole Orange", available: true)
+
+Pigment.create(name: "PR264", description: "Pyrrole Red", available: true)
+
+Pigment.create(name: "PB60", description: "Ultramarine Blue", available: true)
+
+Pigment.create(name: "PV14", description: "Ultramarine Violet", available: true)
+
+
+
+Pigment.create(name: "PBr25", description: "Burnt Umber", available: true)
+
+Pigment.create(name: "PG18", description: "Viridian Green", available: true)
+
+Pigment.create(name: "PBk11", description: "Mars Black", available: true)
+
+Pigment.create(name: "PB29", description: "Winsor Blue", available: true)
+
+Pigment.create(name: "PV37", description: "Quinacridone Magenta", available: true)
+
+Pigment.create(name: "PY129", description: "Aureolin Yellow", available: true)
+
+Pigment.create(name: "PR149", description: "Naphthol Red", available: true)
+
+Pigment.create(name: "PV19/PB15:6", description: "Carbazole Violet", available: true)
+
+Pigment.create(name: "PB15:1", description: "Phthalo Green", available: true)
+
+Pigment.create(name: "PBr7/PBk11", description: "Neutral Tint", available: true)
+
+Pigment.create(name: "PV42", description: "Quinacridone Purple", available: true)
+
+Pigment.create(name: "PY43", description: "Yellow Ochre", available: true)
+
+Pigment.create(name: "PO71", description: "Pyrrole Scarlet", available: true)
+
+Pigment.create(name: "PR206", description: "Quinacridone Red", available: true)
 
 # Paint.create(brand: "Winsor & Newton", name: "Winsor Lemon", transparent: "Semi-Transparent", lightfast: "AA", staining: "Non-Staining", granulating: "Non-Granulating", available: true)
 
@@ -303,7 +306,7 @@ Pigment.create(name: "Titanium White", description: "A warm, opaque white", avai
 Pigment.create(name: "Cadmium Orange", description: "A warm, opaque orange", available: true, color_family_id: orange_family.id)
 Pigment.create(name: "Indian Yellow", description: "A warm, transparent yellow-orange", available: true, color_family_id: yellow_family.id)
 
-Pigment.create(name: "Hooker's Green", description: "A dark green made from a mixture of Prussian Blue and Gamboge", available: true, color_family_id: ColorFamily.find_by(name: "Greens").id)
+Pigment.create(name: "Hooker's Green", description: "A dark green made from a mixture of Prussian Blue and Gamboge", available: true, color_family_id: green_family.id)
 Pigment.create(name: "Pthalo Green", description: "A bright green made from Phthalocyanine Green and a yellow pigment", available: true, color_family_id: ColorFamily.find_by(name: "Greens").id)
 Pigment.create(name: "Cobalt Turquoise", description: "A light blue-green made from Cobalt and Zinc Oxides", available: true, color_family_id: ColorFamily.find_by(name: "Blues").id)
 Pigment.create(name: "Ultramarine Blue", description: "A deep blue made from Lapis Lazuli", available: true, color_family_id: ColorFamily.find_by(name: "Blues").id)
@@ -320,7 +323,58 @@ Pigment.create(name: "Payne's Gray", description: "A dark gray made from a mixtu
 Pigment.create(name: "Neutral Tint", description: "A black made from a mixture of complementary colors", available: true, color_family_id: ColorFamily.find_by(name: "Black").id)
 Pigment.create(name: "Lamp Black", description: "A black made from soot", available: true, color_family_id: ColorFamily.find_by(name: "Black").id)
 
+Pigment.create(name: "PB15", description: "Phthalo Blue", available: true)
+Pigment.create(name: "PG7", description: "Azo Green", available: true)
+Pigment.create(name: "PO49", description: "Quinacridone Gold", available: true)
+Pigment.create(name: "PR108", description: "Cadmium Red", available: true)
 
+puts Pigment.find_by(name: "PR108").id
+
+# Users
+user1 = User.create(email: "test@test.com", first_name: "John", last_name: "Doe", phone: "1234567890", password: "password", password_confirmation: "password")
+
+# Palettes
+palette1 = Palette.create(user_id: user1.id, name: "Vibrant Colors", description: "A collection of bright and bold colors")
+palette2 = Palette.create(user_id: user1.id, name: "Earthy Tones", description: "A set of natural and muted colors")
+
+# Paints
+Pigment.find_by(name: "PR108")
+Paint.create(brand: "Winsor & Newton", name: "Cadmium Red", transparent: "Semi-Transparent", lightfast: "ASTM II", staining: "Medium", granulating: "No", available: true)
+
+PaintPigment.create(paint: Paint.find_by(name: "Cadmium Red"), pigment: Pigment.find_by(name: "PR108"))
+
+
+
+
+Paint.create(brand: "Daniel Smith", name: "Phthalo Blue", transparent: "Semi-Transparent", lightfast: "ASTM II", staining: "High", granulating: "No", available: true)
+
+PaintPigment.create(paint: Paint.find_by(name: "Phthalo Blue"), pigment: Pigment.find_by(name: "PB15"))
+
+color_family_pigments.create
+
+Paint.create(brand: "M. Graham & Co.", name: "Azo Green", transparent: "Transparent", lightfast: "ASTM I", staining: "Low", granulating: "No", available: true)
+
+PaintPigment.create(paint: Paint.find_by(name: "Azo Green"), pigment: Pigment.find_by(name: "PG7"))
+
+Paint.create(brand: "Sennelier", name: "Quinacridone Gold", transparent: "Semi-Transparent", lightfast: "ASTM I", staining: "Low", granulating: "Yes", available: true)
+
+PaintPigment.create(paint: Paint.find_by(name: "Quinacridone Gold"), pigment: Pigment.find_by(name: "PO49"))
+
+# Paint Palettes
+PaintPalette.create(paint_id: Paint.find_by(name: "Quinacridone Gold"), palette_id: palette1.id)
+PaintPalette.create(paint_id: Paint.find_by(name: "Azo Green"), palette_id: palette1.id)
+PaintPalette.create(paint_id: Paint.find_by(name: "Phthalo Blue"), palette_id: palette1.id)
+PaintPalette.create(paint_id: Paint.find_by(name: "Cadmium Red"), palette_id: palette1.id)
+
+PaintPalette.create(paint: Paint.find_by(name: "Cadmium Red"), palette_id: palette1.id)
+PaintPalette.create(paint: Paint.find_by(name: "Cadmium Red"), palette_id: palette1.id)
+PaintPalette.create(paint: Paint.find_by(name: "Cadmium Red"), palette_id: palette1.id)
+PaintPalette.create(paint: Paint.find_by(name: "Cadmium Red"), palette_id: palette1.id)
+
+PaintPalette.create(paint: Paint.find_by(name: "Cadmium Red"), palette_id: palette1.id)
+PaintPalette.create(paint: Paint.find_by(name: "Cadmium Red"), palette_id: palette1.id)
+PaintPalette.create(paint: Paint.find_by(name: "Cadmium Red"), palette_id: palette1.id)
+PaintPalette.create(paint: Paint.find_by(name: "Cadmium Red"), palette_id: palette1.id)
 
 
 

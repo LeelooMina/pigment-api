@@ -29,13 +29,16 @@ Rails.application.routes.draw do
         get :show
       end
 
-      resources :posts do 
+      resources :posts  do 
         resources :comments
       end
       resources :comment_post, only: [:create, :destroy]
       resources :likes, only: [:create, :destroy]
       resources :follows, only: [:create, :destroy]
-      resources :palletes
+      resources :palettes
+      resources :palettes do
+        get 'paints', to: 'palettes#paints'
+      end
       resources :palette_posts
       resources :paints
       resources :paint_palettes, only: [:create, :destroy]

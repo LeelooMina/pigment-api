@@ -3,9 +3,12 @@ class PaintPalettesController < ApplicationController
 
   # GET /paint_palettes
   def index
-    @paint_palettes = PaintPalette.all
+    @paint_ids = @palette.paints.pluck(:id)
+    render json: @paint_ids
 
-    render json: @paint_palettes
+    # @paint_palettes = PaintPalette.all
+
+    # render json: @paint_palettes
   end
 
   # GET /paint_palettes/1
@@ -43,6 +46,12 @@ class PaintPalettesController < ApplicationController
     def set_paint_palette
       @paint_palette = PaintPalette.find(params[:id])
     end
+
+    def set_palette
+      @palette = Palette.find(params[:palette_id])
+    end
+
+    
 
     # Only allow a list of trusted parameters through.
     def paint_palette_params
