@@ -1,11 +1,14 @@
+module Api
+  module V1
 class PaintsController < ApplicationController
   before_action :set_paint, only: %i[ show update destroy ]
+  skip_before_action :authenticate, only: %i[ index ]
 
   # GET /paints
   def index
-    @paints = Paint.all
+    @paints = Paint.all.includes(:pigments)
 
-    render json: @paints
+    render json: @paints.as_json(include: :pigments)
   end
 
   # GET /paints/1
@@ -48,4 +51,6 @@ class PaintsController < ApplicationController
     def paint_params
       params.require(:paint).permit(:brand, :name, :transparent, :lightfast, :staining, :granulating, :available)
     end
+end
+end
 end

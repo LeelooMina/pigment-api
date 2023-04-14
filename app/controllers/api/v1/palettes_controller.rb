@@ -35,10 +35,12 @@ module Api
       end
 
       def paints
-        @paints = @palette.paints.flat_map { |paint| paint.pigments.map(&:color_families) }.flatten.uniq
-        
-        render json: @paints
+        @paints = @palette.paints.includes(:pigments)
+      
+        render json: @paints.as_json(include: :pigments)
       end
+      
+      
       
       
 

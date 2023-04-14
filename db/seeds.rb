@@ -350,7 +350,7 @@ Paint.create(brand: "Daniel Smith", name: "Phthalo Blue", transparent: "Semi-Tra
 
 PaintPigment.create(paint: Paint.find_by(name: "Phthalo Blue"), pigment: Pigment.find_by(name: "PB15"))
 
-color_family_pigments.create
+
 
 Paint.create(brand: "M. Graham & Co.", name: "Azo Green", transparent: "Transparent", lightfast: "ASTM I", staining: "Low", granulating: "No", available: true)
 
