@@ -343,6 +343,18 @@ Paint.create(brand: "Winsor & Newton", name: "Cadmium Red", transparent: "Semi-T
 
 PaintPigment.create(paint: Paint.find_by(name: "Cadmium Red"), pigment: Pigment.find_by(name: "PR108"))
 
+require 'faker'
+
+# Create 50 posts with random data
+50.times do
+  Post.create(
+    user_id: rand(1..10),
+    title: Faker::Lorem.sentence(word_count: 5),
+    content: Faker::Lorem.paragraph,
+    img_url: Faker::LoremFlickr.image(size: "300x300"),
+    username: Faker::Internet.username(specifier: 4..8)
+  )
+end
 
 
 
