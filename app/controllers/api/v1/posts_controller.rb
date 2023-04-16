@@ -6,9 +6,20 @@ module Api
 
       # GET /posts
       def index
-        @posts = Post.all
+        # @posts = Post.all
 
-        render json: @posts
+        # render json: @posts
+        count = params[:limit] || 3 # default to 10 if count param is not present or not a number
+        offset = params[:offset]
+        posts = Post.limit(count).offset(offset)
+        render json: posts
+      end
+
+      def count
+        count = params[:limit] || 3 # default to 10 if count param is not present or not a number
+        offset = params[:offset]
+        posts = Post.limit(count).offset(offset)
+        render json: posts
       end
 
       # GET /posts/1
