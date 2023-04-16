@@ -28,9 +28,13 @@ Rails.application.routes.draw do
         post :create
         get :show
       end
+      get '/posts/:count', to: 'posts#count'
 
       resources :posts  do 
         resources :comments
+       
+
+
       end
       resources :comment_post, only: [:create, :destroy]
       resources :likes, only: [:create, :destroy]
