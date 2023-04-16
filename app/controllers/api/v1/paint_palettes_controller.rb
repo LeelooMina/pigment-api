@@ -1,4 +1,7 @@
-class PaintPalettesController < ApplicationController
+
+module Api
+  module V1
+class PaintPalettesController < Api::V1::ApplicationController
   before_action :set_paint_palette, only: %i[ show update destroy ]
 
   # GET /paint_palettes
@@ -19,13 +22,14 @@ class PaintPalettesController < ApplicationController
   # POST /paint_palettes
   def create
     @paint_palette = PaintPalette.new(paint_palette_params)
-
+  
     if @paint_palette.save
-      render json: @paint_palette, status: :created, location: @paint_palette
+      render json: @paint_palette, status: :created
     else
       render json: @paint_palette.errors, status: :unprocessable_entity
     end
   end
+  
 
   # PATCH/PUT /paint_palettes/1
   def update
@@ -57,4 +61,6 @@ class PaintPalettesController < ApplicationController
     def paint_palette_params
       params.require(:paint_palette).permit(:paint_id, :palette_id)
     end
+end
+end
 end
