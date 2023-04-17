@@ -6,14 +6,12 @@ module Api
 
       # GET /posts
       def index
-        # @posts = Post.all
-
-        # render json: @posts
-        count = params[:limit] || 3 # default to 10 if count param is not present or not a number
-        offset = params[:offset]
-        posts = Post.limit(count).offset(offset)
+        count = params[:limit] || 3 # default to 3 if limit param is not present or not a number
+        offset = params[:offset] || 0 # default to 0 if offset param is not present or not a number
+        posts = Post.limit(count).offset(offset).order(updated_at: :desc, created_at: :desc)
         render json: posts
       end
+      
 
       def count
         count = params[:limit] || 3 # default to 10 if count param is not present or not a number
@@ -43,10 +41,14 @@ module Api
 
       # PATCH/PUT /posts/1
       def update
-        if @post.update(post_params)
-          render json: { message: 'Post updated successfully', post: @post }, status: :ok
+        if @post.user == @current_user # check if the current_user is the same as the user who created the post
+          if @post.update(post_params) 
+            render json: { message: 'Post updated successfully', post: @post }, status: :ok
+          else
+            render json: @post.errors, status: :unprocessable_entity
+          end
         else
-          render json: @post.errors, status: :unprocessable_entity
+          render json: { error: 'Unauthorized' }, status: :unauthorized # if the current_user is not the same as the user who created the post, return an error
         end
       end
 
@@ -69,7 +71,7 @@ module Api
 
       # Only allow a list of trusted parameters through.
       def post_params
-        params.require(:post).permit(:user_id, :title, :content, :img_url)
+        params.require(:post).permit(:user_id, :title, :content, :img_url, :username)
       end
     end
   end
