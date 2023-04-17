@@ -29,6 +29,8 @@ Rails.application.routes.draw do
         get :show
       end
       get '/posts/:count', to: 'posts#count'
+      get "posts/id/:id", to: 'posts#show'
+      put 'post/:id', to: 'posts#update'
 
       resources :posts  do 
         resources :comments
@@ -47,7 +49,7 @@ Rails.application.routes.draw do
       resources :paints
       resources :paint_palettes, only: [:create, :destroy]
       resources :swatches
-      resources :color_families, only: [:create, :destroy]
+      resources :color_families, only: [:index, :show, :create, :destroy]
       resources :pigments
       resources :color_family_pigments, only: [:create, :destroy]
       resources :paint_pigments, only: [:create, :destroy]
