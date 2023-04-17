@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_04_10_231651) do
+ActiveRecord::Schema[7.0].define(version: 2023_04_17_145917) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -97,7 +97,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_10_231651) do
   end
 
   create_table "paints", force: :cascade do |t|
-    t.string "brand"
     t.string "name"
     t.string "transparent"
     t.string "lightfast"
@@ -106,6 +105,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_10_231651) do
     t.boolean "available"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "pigment"
+    t.bigint "color_family_id", default: 1, null: false
+    t.index ["color_family_id"], name: "index_paints_on_color_family_id"
   end
 
   create_table "palette_posts", force: :cascade do |t|
@@ -212,6 +214,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_10_231651) do
   add_foreign_key "paint_palettes", "palettes"
   add_foreign_key "paint_pigments", "paints"
   add_foreign_key "paint_pigments", "pigments"
+  add_foreign_key "paints", "color_families"
   add_foreign_key "palette_posts", "palettes"
   add_foreign_key "palette_posts", "posts"
   add_foreign_key "palettes", "users"
