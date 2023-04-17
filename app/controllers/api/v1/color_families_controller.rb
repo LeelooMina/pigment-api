@@ -1,5 +1,10 @@
-class ColorFamiliesController < ApplicationController
+module Api
+  module V1
+
+class ColorFamiliesController < Api::V1::ApplicationController
   before_action :set_color_family, only: %i[ show update destroy ]
+  skip_before_action :authenticate, only: %i[ index ]
+
 
   # GET /color_families
   def index
@@ -48,4 +53,6 @@ class ColorFamiliesController < ApplicationController
     def color_family_params
       params.require(:color_family).permit(:name, :swatch_url)
     end
+end
+end
 end
