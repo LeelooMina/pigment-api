@@ -6,10 +6,16 @@ class PaintsController < ApplicationController
 
   # GET /paints
   def index
-    @paints = Paint.all.includes(:pigments)
-
+    if params[:color_family_id]
+      @paints = Paint.where(color_family_id: params[:color_family_id])
+    elsif params[:name]
+      @paints = Paint.where("name LIKE ?", "%#{params[:name]}%")
+    else
+      @paints = Paint.all.includes(:pigments)
+    end
     render json: @paints.as_json(include: :pigments)
   end
+  
 
   # GET /paints/1
   def show
