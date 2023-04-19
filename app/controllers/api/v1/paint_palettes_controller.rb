@@ -2,17 +2,15 @@
 module Api
   module V1
 class PaintPalettesController < Api::V1::ApplicationController
-  before_action :set_paint_palette, only: %i[ show update destroy ]
+ 
 
   # GET /paint_palettes
   def index
-    @paint_ids = @palette.paints.pluck(:id)
-    render json: @paint_ids
-
-    # @paint_palettes = PaintPalette.all
-
-    # render json: @paint_palettes
+    @paints = PaintPalette.where(palette_id: params[:palette_id])
+    render json: @paints
   end
+  
+  
 
   # GET /paint_palettes/1
   def show
@@ -42,8 +40,11 @@ class PaintPalettesController < Api::V1::ApplicationController
 
   # DELETE /paint_palettes/1
   def destroy
-    @paint_palette.destroy
+    @palette = PaintPalette.where(palette_id: params[:palette_id])
+    @palette.destroy_all
+    head :no_content
   end
+  
 
   private
     # Use callbacks to share common setup or constraints between actions.
@@ -52,7 +53,7 @@ class PaintPalettesController < Api::V1::ApplicationController
     end
 
     def set_palette
-      @palette = Palette.find(params[:palette_id])
+      @paint_palette = PaintPalette.find_by(palette_id: params[:palette_id])
     end
 
     

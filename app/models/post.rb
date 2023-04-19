@@ -1,15 +1,13 @@
 class Post < ApplicationRecord
   belongs_to :user
 
-  validates :content, :title, presence: true, length: {minimum: 2, mexium: 100}
+  validates :content, :title, presence: true, length: { minimum: 2, maximum: 100 }
 
   has_many :likes
-  has_many :comments, through: :comment_post
-  has_one :palette, through: :palette_post
+  has_many :comment_posts
+  has_many :comments, through: :comment_posts
+  belongs_to :palette_post
+  has_and_belongs_to_many :palettes
 
   has_one_attached :image
-
-
-
-
 end

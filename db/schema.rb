@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_04_17_145917) do
+ActiveRecord::Schema[7.0].define(version: 2023_04_18_222719) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -128,6 +128,11 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_17_145917) do
     t.index ["user_id"], name: "index_palettes_on_user_id"
   end
 
+  create_table "palettes_posts", id: false, force: :cascade do |t|
+    t.bigint "palette_id", null: false
+    t.bigint "post_id", null: false
+  end
+
   create_table "pigments", force: :cascade do |t|
     t.string "name"
     t.string "description"
@@ -198,6 +203,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_17_145917) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "username"
+    t.string "avatar"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["username"], name: "index_users_on_username", unique: true
   end

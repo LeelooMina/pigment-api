@@ -334,3 +334,19 @@ Paint.create(pigment: "PBk9", name: "Ivory Black", transparent: "Semi-Transparen
 
 Paint.create(pigment: "PBk11", name: "Black Iron Oxide", transparent: "Semi-Transparent", lightfast: "ASTM I", staining: "Low", granulating: "Yes", available: true, color_family_id: black_family.id)
 
+
+Palette.create(name: "Summer Sunset", description: "A warm, vibrant palette inspired by summer sunsets", user_id: 1)
+Palette.create(name: "Pastel Dreams", description: "A soft and dreamy palette featuring pastel colors", user_id: 1)
+Palette.create(name: "Midnight Magic", description: "A dark and moody palette featuring rich jewel tones", user_id: 1)
+Palette.create(name: "Autumn Leaves", description: "A cozy palette inspired by the colors of autumn leaves", user_id: 1)
+Palette.create(name: "Ocean Breeze", description: "A cool and refreshing palette inspired by the ocean", user_id: 1)
+Palette.create(name: "Ocean Breeze", description: "A cool and refreshing palette inspired by the ocean", user_id: 1)
+
+
+
+Palette.all[0].paints << Paint.all[0..3]
+Palette.all[1].paints << Paint.all[4..7]
+Palette.all[2].paints << Paint.all[8..11]
+Palette.all[3].paints << Paint.all[0..10]
+Palette.all[4].paints << Paint.all[1..11]
+Palette.all[5].paints << Paint.all[0..5]

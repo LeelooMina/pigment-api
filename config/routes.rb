@@ -19,6 +19,10 @@ Rails.application.routes.draw do
   end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+
+  delete 'api/v1/paint_palettes', to: 'api/v1/paint_palettes#destroy'
+
+
   namespace :api, defaults: { format: :json } do
     namespace :v1 do
       namespace :users do
@@ -38,6 +42,9 @@ Rails.application.routes.draw do
 
 
       end
+
+      
+
       resources :comment_post, only: [:create, :destroy]
       resources :likes, only: [:create, :destroy]
       resources :follows, only: [:create, :destroy]
@@ -47,7 +54,11 @@ Rails.application.routes.draw do
       end
       resources :palette_posts
       resources :paints
-      resources :paint_palettes, only: [:create, :destroy]
+      resources :paint_palettes, only: [:index, :show, :create, :update, :destroy] do
+        delete '/api/v1/paint_palettes', to: 'paint_palettes#destroy'
+
+      end
+      
       resources :swatches
       resources :color_families, only: [:index, :show, :create, :destroy]
       resources :pigments

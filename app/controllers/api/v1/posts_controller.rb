@@ -6,11 +6,16 @@ module Api
 
       # GET /posts
       def index
-        count = params[:limit] || 3 # default to 3 if limit param is not present or not a number
-        offset = params[:offset] || 0 # default to 0 if offset param is not present or not a number
-        posts = Post.limit(count).offset(offset).order(updated_at: :desc, created_at: :desc)
-        render json: posts
+        if (params[:limit] && params[:offset])
+          count = params[:limit] || 0
+          offset = params[:offset] || 0
+          posts = Post.limit(count).offset(offset).order(updated_at: :desc, created_at: :desc).includes(palettes: {paints: {}})
+        else  
+          posts = Post.all.includes(palettes: {paints: {}})
+        end
+        render json: posts.as_json(include: {palettes: {include: :paints}})
       end
+      
       
 
       def count

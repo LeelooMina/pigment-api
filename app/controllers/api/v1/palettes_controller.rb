@@ -5,9 +5,14 @@ module Api
       before_action :get_paints, only: [:paints]
 
       def index
-        @palettes = Palette.all
-        render json: @palettes
+        if params[:user_id]
+          @palettes = Palette.where(user_id: params[:user_id])
+        else
+          @palettes = Palette.all
+        end
+        render json: @palettes.as_json(include: :paints)
       end
+      
 
       def show
         render json: @palette
