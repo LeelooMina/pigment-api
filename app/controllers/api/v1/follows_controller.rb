@@ -1,3 +1,5 @@
+module Api
+  module V1
 class FollowsController < ApplicationController
   before_action :set_follow, only: %i[ show update destroy ]
 
@@ -48,4 +50,6 @@ class FollowsController < ApplicationController
     def follow_params
       params.require(:follow).permit(:follower_id, :followee_id)
     end
+end
+end
 end

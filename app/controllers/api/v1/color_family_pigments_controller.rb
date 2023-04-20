@@ -1,3 +1,5 @@
+module Api
+  module V1
 class ColorFamilyPigmentsController < ApplicationController
   before_action :set_color_family_pigment, only: %i[ show update destroy ]
 
@@ -48,4 +50,6 @@ class ColorFamilyPigmentsController < ApplicationController
     def color_family_pigment_params
       params.require(:color_family_pigment).permit(:colorfamily_id, :pigment_id)
     end
+end
+end
 end

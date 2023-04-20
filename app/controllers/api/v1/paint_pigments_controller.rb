@@ -1,3 +1,5 @@
+module Api
+  module V1
 class PaintPigmentsController < ApplicationController
   before_action :set_paint_pigment, only: %i[ show update destroy ]
 
@@ -48,4 +50,6 @@ class PaintPigmentsController < ApplicationController
     def paint_pigment_params
       params.require(:paint_pigment).permit(:paint_id, :pigment_id)
     end
+end
+end
 end

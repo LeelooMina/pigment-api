@@ -1,3 +1,5 @@
+module Api
+  module V1
 class SwatchesController < ApplicationController
   before_action :set_swatch, only: %i[ show update destroy ]
 
@@ -48,4 +50,6 @@ class SwatchesController < ApplicationController
     def swatch_params
       params.require(:swatch).permit(:user_id, :paint_id, :img_url, :comments)
     end
+end
+end
 end

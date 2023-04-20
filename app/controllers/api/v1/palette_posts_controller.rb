@@ -1,3 +1,5 @@
+module Api
+  module V1
 class PalettePostsController < ApplicationController
   before_action :set_palette_post, only: %i[ show update destroy ]
 
@@ -48,4 +50,6 @@ class PalettePostsController < ApplicationController
     def palette_post_params
       params.require(:palette_post).permit(:palette_id, :post_id)
     end
+end
+end
 end

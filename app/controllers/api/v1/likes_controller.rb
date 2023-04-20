@@ -1,3 +1,5 @@
+module Api
+  module V1
 class LikesController < ApplicationController
   before_action :set_like, only: %i[ show update destroy ]
 
@@ -48,4 +50,6 @@ class LikesController < ApplicationController
     def like_params
       params.require(:like).permit(:user_id, :post_id)
     end
+end
+end
 end

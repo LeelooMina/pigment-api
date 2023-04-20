@@ -1,3 +1,5 @@
+module Api
+  module V1
 class CommentsController < ApplicationController
   before_action :set_comment, only: %i[ show update destroy ]
 
@@ -51,4 +53,6 @@ class CommentsController < ApplicationController
     def comment_params
       params.require(:comment).permit(:user_id, :content, :img_url)
     end
+end
+end
 end
