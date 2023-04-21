@@ -6,14 +6,15 @@ module Api
 
       # GET /posts
       def index
+        
         if (params[:limit] && params[:offset])
           count = params[:limit] || 0
           offset = params[:offset] || 0
-          posts = Post.limit(count).offset(offset).order(updated_at: :desc, created_at: :desc).includes(palettes: {paints: {}})
+          posts = Post.limit(count).offset(offset).order(updated_at: :desc, created_at: :desc)
         else  
-          posts = Post.all.includes(palettes: {paints: {}})
+          posts = Post.all
         end
-        render json: posts.as_json(include: {palettes: {include: :paints}})
+        render json: posts
       end
       
       

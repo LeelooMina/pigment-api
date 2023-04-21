@@ -6,7 +6,6 @@ class Post < ApplicationRecord
   has_many :likes
   has_many :comment_posts
   has_many :comments, through: :comment_posts
-  belongs_to :palette_post
   has_and_belongs_to_many :palettes
 
   has_one_attached :image
