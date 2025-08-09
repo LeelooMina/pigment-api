@@ -8,12 +8,20 @@ class PaintsController < ApplicationController
   def index
     if params[:color_family_id]
       @paints = Paint.where(color_family_id: params[:color_family_id])
+    elsif params[:brand_id]
+      @paints = Paint.where(brand_id: params[:brand_id])
     elsif params[:name]
-      @paints = Paint.where("name LIKE ?", "%#{params[:name]}%")
+      @paints = Paint.where("name ILIKE ?", "%#{params[:name]}%")
     else
-      @paints = Paint.all.includes(:pigments)
+      @paints = Paint.all.includes(:pigments, :brand, :color_family)
     end
-    render json: @paints.as_json(include: :pigments)
+    render json: @paints.as_json(
+      include: { 
+        pigments: { only: [:id, :name, :description, :color_temperature, :mixing_behavior] },
+        brand: { only: [:id, :name, :country] },
+        color_family: { only: [:id, :name, :swatch_url] }
+      }
+    )
   end
   
 
@@ -55,7 +63,7 @@ class PaintsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def paint_params
-      params.require(:paint).permit(:brand, :name, :transparent, :lightfast, :staining, :granulating, :available)
+      params.require(:paint).permit(:brand_id, :name, :transparent, :lightfast, :staining, :granulating, :available, :color_family_id, :pigment)
     end
 end
 end

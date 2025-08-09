@@ -9,7 +9,89 @@
 
 
 
-ColorFamily.create(name: "Red", swatch_url: "#ff0000")
+# Create Brands
+brands_data = [
+  { name: "Winsor & Newton", description: "Professional watercolor paints since 1832", website: "https://www.winsornewton.com", country: "UK" },
+  { name: "Daniel Smith", description: "Extra Fine watercolor paints with unique pigments", website: "https://www.danielsmith.com", country: "USA" },
+  { name: "Schmincke", description: "German-made professional watercolors", website: "https://www.schmincke.de", country: "Germany" },
+  { name: "M. Graham", description: "Honey-based watercolor paints", website: "https://www.mgraham.com", country: "USA" },
+  { name: "Holbein", description: "Japanese watercolor paints", website: "https://www.holbein-works.co.jp", country: "Japan" }
+]
+
+brands_data.each do |brand_data|
+  Brand.find_or_create_by(name: brand_data[:name]) do |brand|
+    brand.description = brand_data[:description]
+    brand.website = brand_data[:website]
+    brand.country = brand_data[:country]
+  end
+end
+
+winsor_newton = Brand.find_by(name: "Winsor & Newton")
+daniel_smith = Brand.find_by(name: "Daniel Smith")
+schmincke = Brand.find_by(name: "Schmincke")
+
+# Enhanced Pigment Data with Advice
+pigment_enhancements = [
+  {
+    name: "PB29",
+    toxicity_level: "Low",
+    mixing_behavior: "Excellent mixing pigment, creates beautiful purples when mixed with reds. Tends to separate in washes creating interesting granular effects.",
+    recommended_for: "Sky washes, mixing violets and grays, landscape painting",
+    color_temperature: "Warm",
+    opacity: "Semi-Transparent",
+    granulation: "High",
+    lightfastness: "ASTM I",
+    staining_power: "Low",
+    common_names: "French Ultramarine, Ultramarine Blue"
+  },
+  {
+    name: "PY3",
+    toxicity_level: "Low",
+    mixing_behavior: "Clean mixing yellow, excellent for creating bright greens and oranges. Maintains transparency well.",
+    recommended_for: "Mixing bright greens, citrus colors, spring flowers",
+    color_temperature: "Cool",
+    opacity: "Transparent",
+    granulation: "Low",
+    lightfastness: "ASTM I",
+    staining_power: "Low",
+    common_names: "Hansa Yellow Light, Lemon Yellow"
+  }
+]
+
+pigment_enhancements.each do |enhancement|
+  pigment = Pigment.find_by(name: enhancement[:name])
+  if pigment
+    pigment.update(enhancement.except(:name))
+  end
+end
+
+# Create Featured Palettes
+featured_artist = User.create(
+  first_name: "Famous",
+  last_name: "Artist",
+  email: "artist@example.com",
+  username: "artist1",
+  phone: "9876543210",
+  password: "password",
+  password_confirmation: "password"
+)
+
+Palette.create(
+  name: "Turner's Sunset",
+  description: "Featured palette inspired by J.M.W. Turner's dramatic skies",
+  user: featured_artist
+)
+
+Palette.create(
+  name: "Monet's Garden",
+  description: "Featured palette capturing the impressionist garden colors",
+  user: featured_artist
+)
+
+# Assign some paints to brands
+Paint.where("name LIKE ?", "%Cadmium%").limit(5).update_all(brand_id: winsor_newton.id)
+Paint.where("name LIKE ?", "%Ultramarine%").limit(3).update_all(brand_id: daniel_smith.id)
+Paint.where("name LIKE ?", "%Hansa%").limit(3).update_all(brand_id: schmincke.id)
 
 
 ColorFamily.create(name: "Orange", swatch_url: "#ffa500")

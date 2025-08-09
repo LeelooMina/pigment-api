@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_04_18_222719) do
+ActiveRecord::Schema[7.0].define(version: 2024_08_09_201600) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -40,6 +40,16 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_18_222719) do
     t.bigint "blob_id", null: false
     t.string "variation_digest", null: false
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
+  end
+
+  create_table "brands", force: :cascade do |t|
+    t.string "name", null: false
+    t.text "description"
+    t.string "website"
+    t.string "country"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_brands_on_name", unique: true
   end
 
   create_table "color_families", force: :cascade do |t|
@@ -107,6 +117,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_18_222719) do
     t.datetime "updated_at", null: false
     t.string "pigment"
     t.bigint "color_family_id", default: 1, null: false
+    t.bigint "brand_id"
+    t.index ["brand_id"], name: "index_paints_on_brand_id"
     t.index ["color_family_id"], name: "index_paints_on_color_family_id"
   end
 
@@ -140,6 +152,16 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_18_222719) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "color_family_id"
+    t.string "toxicity_level"
+    t.text "mixing_behavior"
+    t.text "recommended_for"
+    t.text "avoid_mixing_with"
+    t.string "color_temperature"
+    t.string "opacity"
+    t.string "granulation"
+    t.string "lightfastness"
+    t.string "staining_power"
+    t.text "common_names"
     t.index ["color_family_id"], name: "index_pigments_on_color_family_id"
   end
 
@@ -220,6 +242,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_18_222719) do
   add_foreign_key "paint_palettes", "palettes"
   add_foreign_key "paint_pigments", "paints"
   add_foreign_key "paint_pigments", "pigments"
+  add_foreign_key "paints", "brands"
   add_foreign_key "paints", "color_families"
   add_foreign_key "palette_posts", "palettes"
   add_foreign_key "palette_posts", "posts"

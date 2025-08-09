@@ -7,9 +7,20 @@ class PigmentsController < Api::V1::ApplicationController
 
   # GET /pigments
   def index
-    @pigments = Pigment.all
+    if params[:color_family_id]
+      @pigments = Pigment.by_color_family(params[:color_family_id])
+    elsif params[:color_temperature]
+      @pigments = Pigment.where(color_temperature: params[:color_temperature])
+    else
+      @pigments = Pigment.all.includes(:paints, :color_families)
+    end
 
-    render json: @pigments
+    render json: @pigments.as_json(
+      include: { 
+        paints: { only: [:id, :name, :transparent, :lightfast] },
+        color_families: { only: [:id, :name, :swatch_url] }
+      }
+    )
   end
 
   # GET /pigments/1
@@ -50,7 +61,9 @@ class PigmentsController < Api::V1::ApplicationController
 
     # Only allow a list of trusted parameters through.
     def pigment_params
-      params.require(:pigment).permit(:name, :description, :available)
+      params.require(:pigment).permit(:name, :description, :available, :toxicity_level, :mixing_behavior, 
+                                     :recommended_for, :avoid_mixing_with, :color_temperature, :opacity, 
+                                     :granulation, :lightfastness, :staining_power, :common_names)
     end
 end
 end
