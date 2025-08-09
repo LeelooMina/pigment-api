@@ -2,6 +2,8 @@ module Api
   module V1
     class RecommendationsController < Api::V1::ApplicationController
       skip_before_action :authenticate, only: %i[palette_suggestions pigment_advice compatible_pigments featured_palettes]
+      before_action :validate_palette_id, only: [:palette_suggestions]
+      before_action :validate_pigment_id, only: [:pigment_advice, :compatible_pigments]
 
       # GET /recommendations/palette_suggestions?palette_id=1
       def palette_suggestions
@@ -15,6 +17,8 @@ module Api
           palette: @palette.as_json(include: :paints),
           suggestions: suggested_pigments.as_json(include: :paints)
         }
+      rescue ActiveRecord::RecordNotFound
+        render json: { error: 'Palette not found' }, status: :not_found
       end
 
       # GET /recommendations/pigment_advice?pigment_id=1
@@ -30,6 +34,8 @@ module Api
         }
         
         render json: advice
+      rescue ActiveRecord::RecordNotFound
+        render json: { error: 'Pigment not found' }, status: :not_found
       end
 
       # GET /recommendations/compatible_pigments?pigment_id=1
@@ -40,6 +46,8 @@ module Api
                             .limit(10)
         
         render json: @compatible.as_json(include: :paints)
+      rescue ActiveRecord::RecordNotFound
+        render json: { error: 'Pigment not found' }, status: :not_found
       end
 
       # GET /recommendations/featured_palettes
@@ -110,6 +118,14 @@ module Api
       def parse_avoid_list(avoid_string)
         return [] if avoid_string.blank?
         avoid_string.split(',').map(&:strip)
+      end
+
+      def validate_palette_id
+        return render json: { error: 'palette_id parameter is required' }, status: :bad_request if params[:palette_id].blank?
+      end
+
+      def validate_pigment_id
+        return render json: { error: 'pigment_id parameter is required' }, status: :bad_request if params[:pigment_id].blank?
       end
     end
   end
