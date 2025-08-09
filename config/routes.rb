@@ -64,6 +64,16 @@ Rails.application.routes.draw do
       resources :pigments
       resources :color_family_pigments, only: [:create, :destroy]
       resources :paint_pigments, only: [:create, :destroy]
+      resources :brands
+
+      # Recommendation routes
+      namespace :recommendations do
+        get :palette_suggestions
+        get :pigment_advice
+        get :compatible_pigments
+        get :featured_palettes
+        get :common_palettes
+      end
 
       
     end
